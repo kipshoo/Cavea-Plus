@@ -1,0 +1,34 @@
+<div class="main-verify-container">
+    <div class="verify-container">
+        <h1>კოდი გამოიგზავნა თქვენს ელ-ფოსტაზე. გთხოვთ შეამოწმოთ promotion და spam საქაღალდეებიც</h1>
+        <form #verifyForm="ngForm" (ngSubmit)="onVerifyBtnSubmit(verifyForm)">
+            <input type="text" name="id" ngModel hidden>
+            <div class="form-top">
+                <label for="verifyCode">ვერიფიკაციის კოდი</label>
+                <input 
+                appAuthInputBorderFocus 
+                type="text" 
+                id="verifyCode" 
+                name="code" 
+                ngModel
+                #verifyInp="ngModel"
+                placeholder="ვერიფიკაციის კოდი"
+                pattern="^[0-9]*$"
+                required>
+                <div class="validator-h6" *ngIf="verifyInp.hasError('required') && verifyInp.dirty && verifyInp.invalid">
+                    <h6 class="h6-1-validator mt-1">შევსება აუცილებელია</h6>
+                </div>
+                <div class="validator-h6" *ngIf="verifyStatus === 400">
+                    <h6 class="h6-2-validator mt-1">ჰიუსტონ! პრობლემა გვაქვს! კოდი არასწორია</h6>
+                </div>
+                <div class="validator-h6" *ngIf="verifyInp.hasError('pattern')">
+                    <h6 class="h6-1-validator mt-1">კოდი შეიცავს მხოლოდ რიცხვებს</h6>
+                </div>
+            </div>
+            <div class="form-bottom">
+                <button type="submit">ვერიფიკაცია</button>
+                <p class="mt-5">არ მიგიღიათ კოდი? <strong (click)="resendCode(verifyForm.value.userId)">კოდის ხელახლა მიღება</strong></p>
+            </div>
+        </form>
+    </div>
+</div>

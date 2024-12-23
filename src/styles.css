@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #010116 !important;
+}
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+*:not(i) {
+    font-family: "Noto Sans Georgian", serif !important;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 1px solid #ea1cf3;
+    position: relative;
+    border-radius: 10px;
+}

@@ -1,0 +1,6 @@
+<div class="background">
+    <img src="assets/images/signin-bg.png" alt="Background Image">
+    <div [ngClass]="{'login-width': isLogin(), 'register-width': isRegister(), 'password-width': isPassword(), 'verify-width': isVerify()}" class="content">
+      <router-outlet></router-outlet>
+    </div>
+</div>

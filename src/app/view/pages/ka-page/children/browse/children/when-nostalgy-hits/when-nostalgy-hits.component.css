@@ -1,0 +1,205 @@
+.title {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+.title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.movie-content-container {
+    padding: 20px 56px;
+    margin: 20px 0;
+}
+.movie-image-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    overflow-x: auto;
+    position: relative;
+}
+.image-container{
+    margin: 20px 0;
+    margin-bottom: 30px;
+    width: 272px;
+    height: 360px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    flex-shrink: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 50;
+    transition: .5s;
+    transform-origin: center;
+}
+.name-container {
+    width: 100%;
+    height: 17%;
+    background: linear-gradient(180deg, #010116 0, transparent 110%);
+    display: flex;
+    justify-content: start;
+    align-items: center !important;
+    padding: 20px 20px 0;
+}
+.name-container strong {
+    color: white;
+    font-size: 15px;
+}
+.price-container {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20px;
+}
+.price-container strong {
+    color: white;
+    font-size: 12px;
+    background-color: #010116b3;
+    padding: 3px 12px;
+    border-radius: 200px;
+    border: 1px solid #d840fb;
+    font-weight: 400;
+}
+.image-container:hover {
+    transform: scale(1.12); /* სურათის ოდნავი გაფართოება */
+    z-index: 50;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.title-and-full {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.show-all-movie {
+    color: white;
+    font-size: 16px;
+    font-size: 500;
+}
+.show-all-movie:hover {
+    color: #d840fb;
+    cursor: pointer;
+}
+* p {
+    margin: 0 !important;
+}
+.lang-year-rat-imdb-durat p {
+    display: inline-block;
+}
+.hover-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(360deg, #000000dc 0, transparent 110%);
+}
+
+.image-container.hovered .hover-content {
+    display: block;
+}
+
+.name-container,
+.price-container {
+    display: block;
+    /* Add other styles as needed */
+}
+
+.image-container.hovered .name-container,
+.image-container.hovered .price-container {
+    display: none;
+}
+.hover-inside-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding: 10px;
+}
+.name2-container strong {
+    font-size: 16px;
+}
+.play-and-rating {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: start;
+}
+.play-and-rating button {
+    padding: 4px 16px;
+    height: 46px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    font-size: 14px;
+    color: white;
+    border: 1px solid transparent;
+    font-weight: 500;
+    background: linear-gradient(#010116, #010116) padding-box, 
+                linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb) border-box;
+    transition: background 0.5s ease-out;
+}
+.play-and-rating button:hover {
+    background: linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb) padding-box;
+    background-position: 50px;
+}
+.rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.708);
+    gap: 3px;
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+.rating-container strong {
+    color: white;
+    font-weight: 400;
+    font-size: 13px;
+}
+.rating-container i {
+    font-size: 16px;
+    color: white;
+}
+.genres-container strong {
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+}
+.lang-year-rat-imdb-durat {
+    width: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.605);
+}
+.lang-year-rat-imdb-durat strong, span, p {
+    font-size: 9px;
+    font-weight: 400;
+}
+.language-strong {
+    background-color: rgba(128, 128, 128, 0.409);
+    padding: 1px 2px;
+    border-radius: 3px;
+}

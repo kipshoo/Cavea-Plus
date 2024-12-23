@@ -1,0 +1,230 @@
+.main-register-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(33px);
+}
+.register-container {
+    display: block;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:center;
+    overflow-y: scroll;
+}
+.register-container h1 {
+    font-size: 24px;
+    color: white;
+    font-weight: 400;
+    padding: 48px 0;
+}
+form {
+    width: 100%;
+    height: auto;
+}
+form label {
+  color: white;
+  padding: 0 0 0 16px;
+  margin: 0 0 12px;
+}
+form input, select {
+  width: auto;
+  height: auto;
+  padding: 16px 24px;
+  border-radius: 200px;
+  background-color: #363647;
+  border: 1px solid transparent;
+  outline: none;
+  color: white;
+  font-weight: 400;
+}
+.name-and-last-name,
+.password-and-confPass {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.same-six-container {
+    width: 340px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.birth-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+.inside-birth-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.birthDay-container select {
+    width: 163px;
+    height: auto;
+}
+.birthMonth-container select {
+    width: 325px;
+    height: auto;
+}
+.birthYear-container select {
+    width: 163px;
+    height: auto;
+}
+.birth-container label {
+    margin-left: 28px;
+    
+}
+.gender-and-phone-number {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.phone-number-container {
+    margin-bottom: 2px;
+}
+.email-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.email-container input {
+    width: 93%;
+    height: auto;
+}
+.email-container label {
+    margin-right: 595px;
+}
+.check-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.check-container input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 20%;
+    background-color: #363647;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.check-container input[type="checkbox"]:checked {
+    background-color: #4D89F0;
+}
+.check-container input[type="checkbox"]:checked::after {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    color: white;
+}
+.check-container label {
+    font-size: 16px;
+    color: #ffffff80;
+}
+.check-container strong {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 400;
+}
+.form-button {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-button button {
+    width: 93%;
+    height: auto;
+    padding: 12px 24px;
+    margin-top: 60px;
+    border-radius: 200px;
+    border: none;
+    color: white;
+    font-weight: 400;
+    transition: .5s ease;
+    background: linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb);
+}
+.form-button button:hover {
+    box-shadow: -3px 3px 10px #52fff3e6, 3px 3px 10px #d840fb, -3px -3px 10px #380ad1, 3px -3px 10px #7b0ad1;
+}
+.auth-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.auth-container p {
+    color: #ffffff80;
+    font-size: 16px;
+}
+.auth-container strong {
+    text-decoration: underline;
+    font-weight: 400;
+    cursor: pointer;
+}
+.to-main-page {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    padding-left: 30px;
+}
+.to-main-page p {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    transition: .5s;
+    margin-bottom: 50px;
+}
+.to-main-page p:hover {
+    color: #d840fb;
+    cursor: pointer;
+}
+.h6-1-validator {
+    font-size: 12px !important;
+    color: red !important;
+    margin: 0;
+    padding: 0;
+  }
+.h6-2-validator {
+    font-size: 12px !important;
+    color: red !important;
+    margin: 0;
+    padding: 0;
+}
+.confPass-container i {
+  position: absolute;
+  font-size: 22px;
+  color: #ffffff80 !important;
+  top: 755px;
+  right: 60px;
+}
+.password-container i{
+    position: absolute;
+    font-size: 22px;
+    color: #ffffff80 !important;
+    top: 755px;
+    right: 430px;
+}

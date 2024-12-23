@@ -1,0 +1,25 @@
+.main {
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background-color: transparent;
+    padding-top: 50px;
+    backdrop-filter: blur(1px);
+    position: fixed;
+    left: 0;
+    top: 0;
+
+}
+.center-container {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    color: #fff;
+    padding: 3.12rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    border: .05rem solid rgba(255, 255, 255, .2);
+    border-radius: 2rem;
+    background: #1a1a30;
+    margin: auto 0;
+}

@@ -1,0 +1,204 @@
+<div class="main-register-container">
+    <div class="register-container">
+        <h1>შემოუერთდი კინოსამყაროს</h1>
+        <form #registerForm="ngForm" (ngSubmit)="onRegisterFormSubmit(registerForm)">
+            <div class="name-and-last-name">
+                <div class="name-container same-six-container">
+                    <label for="firstName">სახელი</label>
+                    <input 
+                        appAuthInputBorderFocus 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName"
+                        ngModel
+                        #firstNameInp="ngModel" 
+                        required>
+                    <div class="validator-h6" *ngIf="firstNameInp.hasError('required') && firstNameInp.dirty && firstNameInp.invalid">
+                        <h6 class="h6-1-validator mt-1">შევსება აუცილებელი</h6>
+                    </div>
+                </div>
+                <div class="lastname-container same-six-container">
+                    <label for="lastName">გვარი</label>
+                    <input 
+                        appAuthInputBorderFocus 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        ngModel
+                        #lastNameInp="ngModel"
+                        required>
+                    <div class="validator-h6" *ngIf="lastNameInp.hasError('required') && lastNameInp.dirty && lastNameInp.invalid">
+                        <h6 class="h6-1-validator mt-1">შევსება აუცილებელი</h6>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="birth-container">
+                <label>დაბადების თარიღი</label>
+                <div class="inside-birth-container">
+                    <div class="birthDay-container">
+                        <select 
+                            appAuthInputBorderFocus 
+                            id="birthDay" 
+                            name="birthDay" 
+                            [(ngModel)]="selectedBirthDay" 
+                            required>
+                            <option *ngFor="let birthDay of birthDays" [value]="birthDay">{{birthDay}}</option>
+                        </select>
+                    </div>
+                    <div class="birthMonth-container">
+                        <select 
+                            appAuthInputBorderFocus 
+                            id="birthMonth" 
+                            name="birthMonth"
+                            [(ngModel)]="selectedBirthMonth" 
+                            required>
+                            <option value="1">იანვარი</option>
+                            <option value="2">თებერვალი</option>
+                            <option value="3">მარტი</option>
+                            <option value="4">აპრილი</option>
+                            <option value="5">მაისი</option>
+                            <option value="6">ივნისი</option>
+                            <option value="7">ივლისი</option>
+                            <option value="8">აგვისტო</option>
+                            <option value="9">სექტემბერი</option>
+                            <option value="10">ოქტომბერი</option>
+                            <option value="11">ნოემბერი</option>
+                            <option value="12">დეკემბერი</option>
+                        </select>
+                    </div>
+                    <div class="birthYear-container">
+                        <select 
+                            appAuthInputBorderFocus 
+                            id="birthYear" 
+                            name="birthYear"
+                            [(ngModel)]="selectedBirthYear" 
+                            required>
+                            <option *ngFor="let birthYear of birthYears" [value]="birthYear">{{birthYear}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="gender-and-phone-number">
+                <div class="gender-container same-six-container">
+                    <label>სქესი</label>
+                    <select 
+                        appAuthInputBorderFocus 
+                        name="gender" 
+                        id="gender"
+                        [(ngModel)]="selectedGender" 
+                        required>
+                        <option value="male">მამრობითი</option>
+                        <option value="female">მდედრობითი</option>
+                    </select>
+                </div>
+                
+                <div class="phone-number-container same-six-container">
+                    <label for="phone">მობ. ნომერი</label>
+                    <input 
+                        appAuthInputBorderFocus 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        ngModel
+                        #phoneInp="ngModel"
+                        required>
+                </div>
+                <div class="validator-h6" *ngIf="phoneInp.hasError('required') && phoneInp.dirty && phoneInp.invalid">
+                    <h6 class="h6-1-validator mt-1">შევსება აუცილებელი</h6>
+                </div>
+            </div>
+            <br><br>
+            <div class="email-container">
+                <label for="email">ელ-ფოსტა</label>
+                <input 
+                    appAuthInputBorderFocus 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    ngModel
+                    #emailInp="ngModel"
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    required>
+                <div class="validator-h6 mt-1" *ngIf="emailInp.hasError('required') && emailInp.dirty && emailInp.invalid">
+                    <h6 class="h6-1-validator">შევსება აუცილებელი</h6>
+                </div>
+                <div class="validator-h6 mt-1" *ngIf="emailInp.hasError('pattern') && emailInp.dirty">
+                    <h6 class="h6-2-validator">უი! აბა, ელ-ფოსტა გადაამოწმე</h6>
+                </div>
+            </div>
+            <br><br>
+            <div class="password-and-confPass">
+                <div class="password-container same-six-container">
+                    <label for="password">პაროლი</label>
+                    <i class="fa-solid fa-eye-slash" 
+                       [class.fa-eye]="showPassword" 
+                       [class.fa-eye-slash]="!showPassword" 
+                       (click)="togglePasswordVisibility()"
+                       style="color: white;"></i>
+                    <input 
+                        appAuthInputBorderFocus 
+                        [type]="showPassword ? 'text' : 'password'" 
+                        id="password" 
+                        name="password" 
+                        [(ngModel)]="password"
+                        #passwordInp="ngModel"
+                        required
+                        pattern="^(?=.*[a-zA-Z])(?=.*\d).{6,}$">
+                    <div class="validator-h6 mt-1" *ngIf="passwordInp.hasError('required') && passwordInp.dirty && passwordInp.invalid">
+                        <h6 class="h6-1-validator">შევსება აუცილებელია</h6>
+                    </div>
+                    <div class="validator-h6 mt-1" *ngIf="passwordInp.hasError('pattern') && passwordInp.dirty">
+                        <h6 class="h6-2-validator">პაროლი უნდა იყოს მინიმუმ 6 სიმბოლო, შეიცავდეს 1 ლათინურ ასოს და 1 ციფრს</h6>
+                    </div>
+                </div>
+                <div class="confPass-container same-six-container">
+                    <label for="confirmPassword">გაიმეორეთ პაროლი</label>
+                    <i class="fa-solid fa-eye-slash" 
+                       [class.fa-eye]="showPasswordd" 
+                       [class.fa-eye-slash]="!showPasswordd" 
+                       (click)="togglePasswordVisibilityConf()"
+                       style="color: white;"></i>
+                    <input 
+                        appAuthInputBorderFocus 
+                        [type]="showPasswordd ? 'text' : 'password'" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        [(ngModel)]="confirmPassword"
+                        #confirmPasswordInp="ngModel"
+                        required>
+                    <div class="validator-h6 mt-1" *ngIf="confirmPasswordInp.hasError('required') && confirmPasswordInp.dirty && confirmPasswordInp.invalid">
+                        <h6 class="h6-1-validator">შევსება აუცილებელია</h6>
+                    </div>
+                    <div class="validator-h6 mt-1" *ngIf="confirmPasswordInp.dirty && confirmPassword !== password">
+                        <h6 class="h6-2-validator">პაროლები არ ემთხვევა</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="check-container mt-5">
+                <input 
+                    appAuthInputBorderFocus 
+                    type="checkbox" 
+                    id="termsCheckbox"
+                    name="checkbox" 
+                    [(ngModel)]="isTermsAccepted"
+                    required>
+                <label for="termsCheckbox">ვეთანხმები Cavea+ის <strong (click)="onPrvcAndPlcClick()">პირობებსა და კონფიდენციალურობის პოლიტიკას</strong></label>
+            </div>
+            <div *ngIf="!isTermsAccepted && registerForm.submitted" class="validator-h6 mt-1">
+                <h6 class="h6-1-validator">უნდა დაეთანხმოთ პირობებს</h6>
+            </div>
+            <div class="form-button">
+                <!-- <button type="submit" *ngIf="canSubmit()">რეგისტრაცია</button> -->
+                <button type="submit">რეგისტრაცია</button>
+            </div>
+        </form>
+        <div class="auth-container mt-4">
+            <p>უკვე გაქვთ ანგარიში? <strong routerLink="/auth/login">ავტორიზაცია</strong></p>
+        </div>
+        <div class="to-main-page mt-3">
+            <p routerLink="/">მთავარ გვერდზე დაბრუნება</p>
+        </div>
+    </div>
+</div>

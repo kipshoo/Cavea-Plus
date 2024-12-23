@@ -1,0 +1,32 @@
+.background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #010116;
+}
+.content {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
+  width: auto;
+  height: 100vh;
+}
+.login-width {
+  width: 36% !important;
+}
+.register-width {
+  width: 50% !important;
+}
+.password-width {
+  width: 36%;
+}
+.verify-width {
+  width: 50% !important;
+}

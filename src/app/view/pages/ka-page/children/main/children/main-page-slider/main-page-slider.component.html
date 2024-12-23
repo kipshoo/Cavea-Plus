@@ -1,0 +1,38 @@
+<ng-container *ngIf="sliderArray.length > 0; else errorText">
+  <ng-container *ngFor="let slide of sliderArray; let i = index">
+    <div [id]="'carouselExampleIndicators' + i" class="carousel slide">
+      <div class="carousel-indicators">
+        <button *ngFor="let s of sliderArray; let j = index" 
+                type="button" 
+                [attr.data-bs-target]="'#carouselExampleIndicators' + i" 
+                [attr.data-bs-slide-to]="j" 
+                [ngClass]="{active: j === currentIndex}"
+                [attr.aria-label]="'Slide ' + (j + 1)"
+                (click)="changeSlide(j)">
+        </button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item" [class.active]="i === currentIndex">
+          <img [src]="'https://cavea.plus' + slide.mediaUrl" alt="" class="d-block w-100">
+          <h1>{{slide.name}}</h1>
+          <p *ngIf="slide.description; else showButton">{{slide.description}}</p>
+          <ng-template #showButton>
+            <button *ngIf="i !== 0 || slide.label.name">{{ slide.price > 0 ? 'გამოიწერე' : 'Play' }}</button>
+          </ng-template>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" (click)="previousSlide()">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" (click)="nextSlide()">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #errorText>
+  <p>Error loading slides</p>
+</ng-template>

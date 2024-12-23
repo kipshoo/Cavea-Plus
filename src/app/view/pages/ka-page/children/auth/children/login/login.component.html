@@ -1,0 +1,64 @@
+<div class="main-login-container">
+  <div class="login-container">
+    <h1>განაგრძე ყურება</h1>
+    <div class="on-invalid-user" *ngIf="loginStatus === 400">
+      <small class="on-invalid-user-message">
+        პაროლი, ან ელ-ფოსტა არასწორია<br>
+        <strong routerLink="/auth/password/reset">დაგავიწყდა პაროლი</strong>
+      </small>
+    </div>
+    <div class="form-container">
+      <form #loginForm="ngForm" (ngSubmit)="onLoginFormSubbmit(loginForm)">
+        <div class="email-container">
+          <label for="email">ელ-ფოსტა</label><br>
+          <input 
+             appAuthInputBorderFocus 
+             ngModel 
+             class="mt-3" 
+             type="email" 
+             id="email" 
+             name="email" 
+             required 
+             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+             #emailInp="ngModel">
+          <div class="validator-h6 mt-1" *ngIf="emailInp.hasError('required') && emailInp.dirty && emailInp.invalid">
+            <h6 class="h6-1-validator">შევსება აუცილებელი</h6>
+          </div>
+          <div class="validator-h6 mt-1" *ngIf="emailInp.hasError('pattern') && emailInp.dirty">
+            <h6 class="h6-2-validator">უი! აბა, ელ-ფოსტა გადაამოწმე</h6>
+          </div>
+        </div>
+        <br>
+        <div class="password-container">
+          <label for="password">პაროლი</label><br>
+          <i class="fa-solid fa-eye-slash" 
+             [class.fa-eye]="showPassword" 
+             [class.fa-eye-slash]="!showPassword" 
+             (click)="togglePasswordVisibility()"
+             style="color: white;"></i>
+          <input 
+             appAuthInputBorderFocus 
+             ngModel 
+             class="mt-3" 
+             [type]="showPassword ? 'text' : 'password'" 
+             id="password" 
+             name="password" 
+             required
+             #passwordInp="ngModel">
+          <div class="validator-h6" *ngIf="passwordInp.hasError('required') && passwordInp.dirty && passwordInp.invalid">
+            <h6 class="h6-1-validator mt-1">შევსება აუცილებელი</h6>
+          </div>
+        </div>
+
+        <p class="mt-3 d-flex justify-content-end align-items-center" routerLink="/auth/password/reset">დაგავიწყდა პაროლი?</p>
+        
+        <div class="auth-login-bottom-container">
+          <button class="auth-button">ავტორიზაცია</button>
+          <div class="auth-container"><h2>არ გაქვს ანგარიში? გაიარე <strong routerLink="/auth/register">რეგისტრაცია</strong></h2></div>
+        </div>
+        <div class="to-main-page mt-3 d-flex justify-content-start !important"><h3 routerLink="/">მთავარ გვერდზე დაბრუნება</h3></div>
+      </form>
+    </div>
+  </div>
+</div>
+

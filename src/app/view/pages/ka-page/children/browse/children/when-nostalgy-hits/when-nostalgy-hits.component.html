@@ -1,0 +1,64 @@
+<ng-container *ngFor="let movie of moviesArray">
+    <ng-container>
+        <div class="movie-content-container">
+            <div class="movie-image-container">
+                <ng-container *ngFor="let movieItem of movie.moviesArray; let i = index">
+                    <div class="image-container" 
+                        [ngClass]="{'hovered': hoveredIndex === i}" 
+                        (mouseenter)="onHover(i)" 
+                        (mouseleave)="onHover(null)" 
+                        style="background-image: url(https://cavea.plus{{movieItem.poster}});">
+                        <div class="price-container">
+                            <strong>{{movieItem.price > 0 ? 'გამოიწერე' : 'უფასო'}}</strong>
+                        </div>
+                        <div class="name-container">
+                            <strong>{{movieItem.name.slice(0,19)}}...</strong>
+                        </div>
+
+                        <!-- on hover -->
+                        <div class="hover-content">
+                            <div class="hover-inside-content">
+                                <div class="hover-content-top">
+                                    <div class="add-to-collection">
+                                    </div>
+                                </div>
+                                <div class="hover-content-bottom">
+                                    <div class="name2-container mt-5">
+                                        <strong>{{movieItem.name}}</strong>
+                                    </div>
+                                    <div class="play-and-rating mt-3">
+                                        <button>play</button>
+                                        <div class="rating-container">
+                                            <i class="fa-regular fa-star"></i>
+                                            <strong class="text-white">{{movieItem.rating}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="genres-container mt-4">
+                                        <strong class="text-white">{{movieItem.genres[0].name}}</strong>
+                                    </div>
+                                    <div class="lang-year-rat-imdb-durat">
+                                        <ng-container *ngFor="let language of movieItem.languages">
+                                            <strong class="language-strong">{{language}}</strong>
+                                            <span>|</span>
+                                        </ng-container>
+                                        <p>•</p>
+                                        <strong>{{movieItem.year}}</strong>
+                                        <p>•</p>
+                                        <strong class="language-strong">{{movieItem.mpaaRating}}</strong>
+                                        <p *ngIf="movieItem.imdb">•</p>
+                                        <strong *ngIf="movieItem.imdb" style="font-size: 9px !important;">{{movieItem.imdb ? 'IMDB ' + movieItem.imdb : ''}}</strong>
+                                        <p *ngIf="movieItem.duration">•</p>
+                                        <strong *ngIf="movieItem.duration" style="font-size: 9px !important;">
+                                            {{ movieItem.duration / 3600 | number: '1.0-0' }}h 
+                                            {{ (movieItem.duration % 3600) / 60 | number: '1.0-0' }}m
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
