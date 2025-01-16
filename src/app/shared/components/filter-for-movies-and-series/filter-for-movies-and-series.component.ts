@@ -52,6 +52,7 @@ export class FilterForMoviesAndSeriesComponent {
   toYear!:number;
   ratingIMDB:number[] = []
   ratingCavea:number[] = []
+  isBurgerMenuActive = false;
   languages:Array<any> = [
     {name: 'ქართული', id: 'GEO'},
     {name: 'ინგლისური', id: 'ENG'},
@@ -195,5 +196,9 @@ export class FilterForMoviesAndSeriesComponent {
         this.fetchmoviespaginatedS(limit, offset + limit)
       }
     })
+  }
+
+  toggleBurgerMenu() {
+    this.isBurgerMenuActive = !this.isBurgerMenuActive;
   }
 }

@@ -1,5 +1,6 @@
 <div class="main_filter_container">
-  <div class="filter-container">
+  <button class="burger-button" (click)="toggleBurgerMenu()"><i class="fa-regular fa-chart-bar"></i></button>
+  <div class="filter-container" [class.active]="isBurgerMenuActive">
     <div class="mat-div">
       <mat-form-field class="top">
         <mat-label class="label">ჟანრი</mat-label>

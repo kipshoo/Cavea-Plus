@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<app-filter-for-movies-and-series (filteredData)="updateMovieArray($event)"></app-filter-for-movies-and-series>
+<app-filter-for-movies-and-series (filteredDataS)="updateMovieArray($event)"></app-filter-for-movies-and-series>
 
 <ng-container *ngIf="movieArray.length > 0; else error">
     <div class="movie-content-container">

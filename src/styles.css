@@ -28,6 +28,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #010116 !important;
     border-radius: 12px !important;
     border: 1px solid rgb(255, 230, 91) !important;
+    
 }
 .mat-mdc-select .mat-mdc-select-arrow {
     color: black !important;
@@ -51,5 +52,18 @@ svg{
     color: white;
 }
 .mat-mdc-text-field-wrapper:hover svg{
-    color: rgb(120, 0, 153)
+    color: rgb(120, 0, 153);
+}
+
+@media (max-width: 568px) {
+    .mat-mdc-form-field {
+        width: 400px !important;
+        height: 60px;
+    }
+    .mat-mdc-text-field-wrapper {
+        width: 400px !important;
+    }
+    .mat-mdc-select-panel {
+        width: 400px !important;
+    }
 }
