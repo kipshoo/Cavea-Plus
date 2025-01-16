@@ -11,7 +11,7 @@
       </mat-form-field>
     
       <mat-form-field class="top">
-        <mat-label class="label ">წლიდან</mat-label>
+        <mat-label class="label ">წელი-დან</mat-label>
         <mat-select class="select" [panelClass]="'custom-panel'" [(value)]="fromYear" (selectionChange)="onFromYearChange(); filter()">
           <ng-container *ngFor="let year of years">
             <mat-option [value]="year">{{ year }}</mat-option>
@@ -20,7 +20,7 @@
       </mat-form-field>
     
       <mat-form-field class="top">
-        <mat-label class="label">წლამდე</mat-label>
+        <mat-label class="label">წელი-მდე</mat-label>
         <mat-select class="select" [panelClass]="'custom-panel'" [(value)]="toYear" (selectionChange)="filter()">
           <ng-container *ngFor="let year of getToYearOptions()">
             <mat-option [value]="year">{{ year }}</mat-option>

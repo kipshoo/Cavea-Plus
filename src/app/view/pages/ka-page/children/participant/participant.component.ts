@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ParticipantService } from '../../../../services/participant.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-participant',
@@ -14,7 +15,7 @@ moviesArray:Array<any> = [];
   hoveredMovie: any = null;
   blockObject: any = [];
 
-  constructor(private activatedRoute:ActivatedRoute, private participantService:ParticipantService){}
+  constructor(private activatedRoute:ActivatedRoute, private participantService:ParticipantService, private authService:AuthService, private router:Router){}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -38,4 +39,16 @@ moviesArray:Array<any> = [];
     onHover(movie: any | null) {
       this.hoveredMovie = movie;
     }
+
+    onBtnClickGuard() {
+      const isLoggedIn = this.authService.isLoggedIn();
+      console.log('AuthGuard check:', isLoggedIn);
+      if (isLoggedIn) {
+        return true;
+      } else {
+        this.router.navigate(['auth/login']);
+        return false;
+      }
+    }
+
 }

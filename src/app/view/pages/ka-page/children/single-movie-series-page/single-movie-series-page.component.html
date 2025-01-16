@@ -30,7 +30,16 @@
             <ng-container *ngIf="movie.type != 'SVOD'">
               <button appPlayButtonDesign (click)="onBtnClickGuard()">Play</button>
             </ng-container>
-            <img src="/src/assets/cavea-logo.svg" alt="">
+            <div class="bookmark-container">
+              <div *ngIf="isHoveredBookmark" class="message">კოლექციაში დამატება</div>
+              <img 
+              [src]="isHoveredBookmark ? 'assets/svg icons/bookmarkHover.svg' : 'assets/svg icons/bookmark.svg'" 
+              (mouseenter)="onHoverBookmark(true)" 
+              (mouseleave)="onHoverBookmark(false)" 
+              (click)="onBtnClickGuard()"
+              style="cursor: pointer;"
+              alt="Bookmark">
+            </div>
           </div>
           <div class="description-crew">
             <div class="description">

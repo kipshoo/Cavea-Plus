@@ -1,1 +1,76 @@
 <app-header></app-header>
+
+<app-filter-for-movies-and-series (filteredData)="updateMovieArray($event)"></app-filter-for-movies-and-series>
+
+<ng-container *ngIf="movieArray.length > 0; else error">
+    <div class="movie-content-container">
+        <div class="movie-image-container">
+            <ng-container *ngFor="let movieItem of movieArray; let i = index">
+                <div class="image-container" 
+                    [ngClass]="{'hovered': hoveredMovie === movieItem}" 
+                    (mouseenter)="onHover(movieItem)" 
+                    (mouseleave)="onHover(null)" 
+                    style="background-image: url(https://cavea.plus{{movieItem.poster}});"
+                    [routerLink]="['/movies', movieItem.slug]">
+                    <div class="price-container">
+                        <strong>{{movieItem.type == 'SVOD' ? 'გამოიწერე' : 'უფასო'}}</strong>
+                    </div>
+                    <div class="name-container">
+                        <strong>{{ movieItem.name.length > 19 ? movieItem.name.slice(0, 19) + '...' : movieItem.name }}</strong>
+                    </div>
+                    <div class="hover-content">
+                        <div class="hover-inside-content">
+                            <div class="hover-content-top">
+                                <div class="add-to-collection">
+                                </div>
+                            </div>
+                            <div class="hover-content-bottom">
+                                <div class="name2-container mt-5">
+                                    <strong>{{movieItem.name}}</strong>
+                                </div>
+                                <div class="play-and-rating mt-3">
+                                    <ng-container *ngIf="movieItem.type == 'SVOD'">
+                                        <button appSubscriptionAuthButtonDesign (click)="onBtnClickGuard()">გამოიწერე</button>
+                                      </ng-container>
+                                      <ng-container *ngIf="movieItem.type != 'SVOD'">
+                                        <button appPlayButtonDesign (click)="onBtnClickGuard()">Play</button>
+                                      </ng-container>
+                                    <div class="rating-container">
+                                        <i class="fa-regular fa-star"></i>
+                                        <strong class="text-white">{{movieItem.rating}}</strong>
+                                    </div>
+                                </div>
+                                <div class="genres-container mt-4">
+                                    <strong class="text-white">{{movieItem.genres[0].name}}</strong>
+                                </div>
+                                <div class="lang-year-rat-imdb-durat">
+                                    <ng-container *ngFor="let language of movieItem.languages">
+                                        <strong class="language-strong">{{language}}</strong>
+                                        <span>|</span>
+                                    </ng-container>
+                                    <p>•</p>
+                                    <strong>{{movieItem.year}}</strong>
+                                    <p>•</p>
+                                    <strong class="language-strong">{{movieItem.mpaaRating}}</strong>
+                                    <p *ngIf="movieItem.imdb">•</p>
+                                    <strong *ngIf="movieItem.imdb" style="font-size: 9px !important;">{{movieItem.imdb ? 'IMDB ' + movieItem.imdb : ''}}</strong>
+                                    <p *ngIf="movieItem.duration">•</p>
+                                    <strong *ngIf="movieItem.duration" style="font-size: 9px !important;">
+                                        {{ movieItem.duration / 3600 | number: '1.0-0' }}h 
+                                        {{ (movieItem.duration % 3600) / 60 | number: '1.0-0' }}m
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #error>
+    <h1>MOVIES FETCH ERROR</h1>
+</ng-template>
+
+<app-footer></app-footer>

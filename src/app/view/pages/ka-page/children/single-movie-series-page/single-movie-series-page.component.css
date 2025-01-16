@@ -392,12 +392,31 @@ button[appPlayButtonDesign] {
     overflow-x: auto;
     position: relative;
 }
-
 .play-addToCollection-favoirites img {
-    width: 100px;
-    height: 100px;
+    width: 36px;
 }
-
+.bookmark-container {
+    position: relative;
+    display: inline-block;
+}
+.message {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #010116;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  opacity: 0;
+  transition:0.5s ease;
+  width: 155px;
+  border: 1px solid #d840fb;
+}
+.bookmark-container:hover .message {
+  opacity: 1;
+}
 
 
 

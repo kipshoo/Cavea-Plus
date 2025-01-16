@@ -1,3 +1,6 @@
+@import "@angular/material/prebuilt-themes/azure-blue.css";
+
+
 body {
     background-color: #010116 !important;
 }
@@ -21,7 +24,6 @@ a {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@import "~@angular/material/prebuilt-themes/azure-blue.css";
 .mat-mdc-select-panel {
     background-color: #010116 !important;
     border-radius: 12px !important;

@@ -21,4 +21,8 @@ export class MoviesAndSeriesService {
   public getfilteredseries(url:any, url2:any, limit:number, offset:number):Observable<any>{
     return this.http.get(`${this.commonService.baseUrl}/movies/list?lang=ka&${url}distributors=amedia&limit=${limit}&offset=${offset}&${url2}movieType=series&order=newest`)
   }
+
+  public getcards(limit:number, offset:number):Observable<any>{
+    return this.http.get(`${this.commonService.baseUrl}/movies/list?lang=ka&limit=${limit}&offset=${offset}&movieType=series&order=newest`)
+  }
 }

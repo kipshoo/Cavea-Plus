@@ -31,10 +31,10 @@
                                 </div>
                                 <div class="play-and-rating mt-3">
                                     <ng-container *ngIf="movieItem.type == 'SVOD'">
-                                        <button appSubscriptionAuthButtonDesign>გამოიწერე</button>
+                                        <button appSubscriptionAuthButtonDesign (click)="onBtnClickGuard()">გამოიწერე</button>
                                       </ng-container>
                                       <ng-container *ngIf="movieItem.type != 'SVOD'">
-                                        <button appPlayButtonDesign>Play</button>
+                                        <button appPlayButtonDesign (click)="onBtnClickGuard()">Play</button>
                                       </ng-container>
                                     <div class="rating-container">
                                         <i class="fa-regular fa-star"></i>

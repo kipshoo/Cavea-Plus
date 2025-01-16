@@ -16,6 +16,7 @@ export class SingleMovieSeriesPageComponent {
   moviesArray:Array<any> = [];
   recomendedMovies:Array<any> = [];
   hoveredMovie: any = null;
+  isHoveredBookmark:boolean = false;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -63,4 +64,9 @@ export class SingleMovieSeriesPageComponent {
       return false;
     }
   }
+
+  onHoverBookmark(variable:boolean) {
+    this.isHoveredBookmark = variable;
+  }
+
 }

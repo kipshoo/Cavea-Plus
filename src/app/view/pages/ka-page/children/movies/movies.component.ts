@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../../../services/movies.service';
 import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -10,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './movies.component.css'
 })
 export class MoviesComponent implements OnInit {
-  constructor(private moviesService:MoviesService){}
+  constructor(private moviesService:MoviesService, private authService:AuthService, private router:Router){}
   
   hoveredMovie: any = null;
 
@@ -48,5 +50,16 @@ export class MoviesComponent implements OnInit {
 
   onHover(movie: any | null) {
     this.hoveredMovie = movie;
+  }
+
+  onBtnClickGuard() {
+    const isLoggedIn = this.authService.isLoggedIn();
+    console.log('AuthGuard check:', isLoggedIn);
+    if (isLoggedIn) {
+      return true;
+    } else {
+      this.router.navigate(['auth/login']);
+      return false;
+    }
   }
 }
