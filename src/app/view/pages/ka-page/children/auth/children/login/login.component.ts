@@ -23,18 +23,18 @@ export class LoginComponent implements OnInit {
   public onLoginFormSubbmit(form: NgForm) {
     let loginData: LoginForm = form.value;
     this.authService.sendLoginRequest(loginData)
-    .subscribe(
-      (response) => {
-        console.log(response);
-        this.loginStatus = response.status;
-      },
-      (error) => {
-        this.loginStatus = error.status;
-        console.error(error);
-      }
-    );
+      .subscribe(
+        (response) => {
+          console.log('Login response:', response);
+          this.loginStatus = response.status;
+        },
+        (error) => {
+          this.loginStatus = error.status;
+          console.error('Error during login:', error);
+        }
+      );
   }
-
+  
   ngOnInit(): void {
     localStorage.removeItem('id')
   }

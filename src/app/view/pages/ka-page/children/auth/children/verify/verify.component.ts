@@ -7,49 +7,59 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-verify',
   standalone: false,
-  
   templateUrl: './verify.component.html',
   styleUrl: './verify.component.css'
 })
-export class VerifyComponent {
-  constructor(private authService:AuthService, private router:Router) {}
 
-  verifyStatus:number | null = null;
+export class VerifyComponent {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  verifyStatus: number | null = null;
+  verifyStatus2: number | null = null;
+  userId: string | null = null;
+
+  ngOnInit() {
+    const storedId = localStorage.getItem('id');
+    if (storedId) {
+      this.userId = JSON.parse(storedId);
+    }
+  }
 
   public onVerifyBtnSubmit(form: NgForm) {
-    let id:any = JSON.parse(localStorage.getItem('id') || '')
-    if(id == null) {
-      console.error('id not found');
+    if (!this.userId) {
+      console.error('No User ID available for verification');
       return;
     }
-    form.controls['id'].setValue(id);
-      let verifyData:VerifyForm = form.value;
-      this.authService.sendVerifyRequest(verifyData)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.verifyStatus = response.status;
-          if (response.status != 'error') {
-            this.router.navigate(['/auth/login']);
-          }else {
-            console.log('error');
-          }
-        },
-        (error) => {
-          this.verifyStatus = error.status;
-          console.error(error);
+
+    const verifyData: VerifyForm = { ...form.value, id: this.userId };
+    this.authService.sendVerifyRequest(verifyData).subscribe(
+      (response) => {
+        this.verifyStatus = response.status;
+        if (response.status !== 'error') {
+          this.router.navigate(['/auth/login']);
         }
-      );
+      },
+      (error) => {
+        this.verifyStatus = error.status;
+        console.error('Error during verification:', error);
+      }
+    );
+  }
+
+  public resendCode(): void {
+    if (!this.userId) {
+      console.error('No User ID available for resending code');
+      return;
     }
-    resendCode(userId: string):void {
-      this.authService.resendVeiryfyRequest(userId)
-      .subscribe({
-        next:(response) => {
-          console.log(response);
-        },
-        error: (error) => {
-          console.error(error);
-        }
-      });
-    }
+
+    this.authService.resendVeiryfyRequest(this.userId).subscribe({
+      next: (responsee) => {
+        localStorage.setItem('id', JSON.stringify(responsee.id));
+        this.verifyStatus2 = responsee.status;
+      },
+      error: (error) => {
+        console.error('Error during code resend:', error);
+      },
+    });
+  }
 }

@@ -1,0 +1,67 @@
+.main_filter_container {
+    margin-top: 150px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 56px;
+}
+.filter-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.mat-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.label {
+    font-size: 13px;
+    color: white;
+}
+.checkbox_container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.checkbox_container label {
+    color: white;
+    font-size: 15px;
+}
+.checkbox_container input[type="checkbox"] {
+    width: 26px;
+    height: 26px;
+    appearance: none;
+    border: 2px solid #343a40;
+    border-radius: 5px;
+    position: relative;
+    background-color: #343a40;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.checkbox_container input[type="checkbox"]:hover {
+  border-color: #6610f2; 
+  background-color: #010116;
+}
+.checkbox_container input[type="checkbox"]:checked::before {
+  content: '\2713';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  color: white; 
+  text-align: center;
+  line-height: 24px;
+}
+.checkbox_container input[type="checkbox"]:checked {
+  background-color: #380ad1;
+  border-color: #380ad1;
+}

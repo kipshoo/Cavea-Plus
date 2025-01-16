@@ -1,7 +1,15 @@
 <main class="main">
     <ng-container>
-        <div class="center-container" [innerHTML]="empty">
-        
+        <div class="evrth-container">
+            <div class="close-and-title">
+                <div class="temp"></div>
+                <h1 style="font-size: 24px; color: white; font-weight: 600;">Cavea+-ს გამოყენების პირობები</h1>
+                <div class="close-button">
+                    <button (click)="onClsBtnClick()">X</button>
+                </div>
+            </div>
+            <div class="center-container" [innerHTML]="empty">
+            </div>
         </div>
     </ng-container>
 </main>

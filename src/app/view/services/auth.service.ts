@@ -33,4 +33,19 @@ export class AuthService {
     return this.http.get(`${this.commonService.baseUrl}/auth/verify/resend/${userId}`);
   }
 
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('authToken');
+    console.log(token);
+    console.log('Token in localStorage:', token);
+    return !!token;
+  }
+
+  loginUser(token: string) {
+    console.log("Saving token:", token);
+    localStorage.setItem('authToken', token);
+  }
+
+  logoutUser() {
+    localStorage.removeItem('authToken');
+  }
 }

@@ -1,0 +1,490 @@
+.movie-content-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-conatiner {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 110px;
+    padding: 0 104px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bottom-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    column-gap: 20px;
+}
+.lang-year-rat-imdb-durat-1 p {
+    display: inline-block;
+    margin: 0 3px;
+}
+.lang-year-rat-imdb-durat-1 {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.605);
+    margin: 8px 0;
+}
+.lang-year-rat-imdb-durat-1 strong,
+.lang-year-rat-imdb-durat-1 span,
+.lang-year-rat-imdb-durat-1 p {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+}
+.language-strong {
+    background-color: rgba(128, 128, 128, 0.409);
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+.movie-name {
+    padding: 0;
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+}
+button[appSubscriptionAuthButtonDesign] {
+    height: 46px !important;
+}
+button[appPlayButtonDesign] {
+    padding: 11px 23px !important;
+    width: 80px !important;
+    height: 46px !important;
+    font-size: 16px !important;
+}
+.play-addToCollection-favoirites {
+    margin: 12px 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+}
+.crew {
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.description-crew {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.description h4 {
+    width: 100%;
+    font-size: 16px;
+    color: white;
+    margin: 0 0 16px;
+    padding: 0 16px 0 0;
+}
+.crew p {
+    color: #999999;
+    font-size: 16px;
+    font-weight: 500;
+}
+.crew strong {
+    color: white !important;
+    font-weight: bold !important;
+    transition: 0.1s ease !important;
+    cursor: pointer;
+}
+.crew strong:hover {
+    color: #d840fb !important;
+}
+.crew h6 {
+    color: white !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    display: inline !important;
+}
+.series-seasons {
+    margin-top: 150px;
+    width: 100%;
+    height: 100%;
+    padding: 0 104px;
+}
+.radio-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .custom-radio {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+  }
+  
+  .custom-radio input[type="radio"] {
+    display: none;
+  }
+  .custom-radio:hover {
+    border: 1px solid #380AD1;
+  }
+  
+  
+  .custom-radio span {
+    position: absolute;
+    color: #f8f9fa;
+  }
+  
+  .custom-radio input[type="radio"]:checked + span {
+    background-color: #170561;
+    color: #fff;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.recomendation-movies {
+    margin-top: 150px;
+    padding: 0 104px;
+}
+.title-of-recomendation {
+    font-size: 24px;
+    color: #f8f9fa;
+}
+.image-container{
+    margin: 20px 0;
+    margin-bottom: 30px;
+    width: 272px;
+    height: 360px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    flex-shrink: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 1;
+    transition: .5s;
+    transform-origin: center;
+}
+.name-container {
+    width: 100%;
+    height: 17%;
+    background: linear-gradient(180deg, #010116 0, transparent 110%);
+    display: flex;
+    justify-content: start;
+    align-items: center !important;
+    padding: 20px 20px 0;
+}
+.name-container strong {
+    color: white;
+    font-size: 15px;
+}
+.price-container {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20px;
+}
+.price-container strong {
+    color: white;
+    font-size: 12px;
+    background-color: #010116b3;
+    padding: 3px 12px;
+    border-radius: 200px;
+    border: 1px solid #d840fb;
+    font-weight: 400;
+}
+.image-container:hover {
+    transform: scale(1.12);
+    z-index: 50;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.title-and-full {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 138px;
+    padding: 0 56px;
+}
+.show-all-movie {
+    color: white;
+    font-size: 16px;
+    font-size: 500;
+}
+.show-all-movie:hover {
+    color: #d840fb;
+    cursor: pointer;
+}
+* p {
+    margin: 0 !important;
+}
+.lang-year-rat-imdb-duration p {
+    display: inline-block;
+}
+.hover-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(360deg, #000000dc 0, transparent 110%);
+}
+
+.image-container.hovered .hover-content {
+    display: block;
+}
+
+.name-container,
+.price-container {
+    display: block;
+}
+
+.image-container.hovered .name-container,
+.image-container.hovered .price-container {
+    display: none;
+}
+.hover-inside-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding: 10px;
+}
+.name2-container strong {
+    font-size: 16px;
+}
+.play-and-rating {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: start;
+}
+.free-button {
+    padding: 4px 16px;
+    height: 40px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    font-size: 14px;
+    color: white;
+    border: 1px solid transparent;
+    font-weight: 500;
+    background: linear-gradient(#010116, #010116) padding-box, 
+                linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb) border-box;
+    transition: background 0.5s ease-out;
+}
+.free-button:hover {
+    background: linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb) padding-box;
+    background-position: 50px;
+}
+.subscribe-button {
+  left: 250px;
+  top: calc(620px + 40px);
+  padding: 12px 24px;
+  height: 40px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  font-size: 16px;
+  color: white;
+  border: 1px solid transparent;
+  font-weight: 500;
+  background: linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb);
+  transition: .5s ease;
+  border: none;
+}
+
+.subscribe-button:hover {
+    box-shadow: -3px 3px 10px #52fff3e6, 3px 3px 10px #d840fb, -3px -3px 10px #380ad1, 3px -3px 10px #7b0ad1;
+}
+.rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.708);
+    gap: 3px;
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+.rating-container strong {
+    color: white;
+    font-weight: 400;
+    font-size: 13px;
+}
+.rating-container i {
+    font-size: 16px;
+    color: white;
+}
+.genres-container strong {
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+}
+.lang-year-rat-imdb-duration {
+    width: fit-content !important;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.605);
+}
+.lang-year-rat-imdb-duration strong, 
+.lang-year-rat-imdb-duration span, 
+.lang-year-rat-imdb-duration p {
+    font-size: 9px;
+    font-weight: 400;
+}
+.language-strong-1 {
+    background-color: rgba(128, 128, 128, 0.409);
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+.recomendation-movies-content {
+    width: 100%;
+    height: auto;
+}
+.movies-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    overflow-x: auto;
+    position: relative;
+}
+
+.play-addToCollection-favoirites img {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .movie-content-container {
+        padding: 0 10px;
+        margin-top: 50px;
+    }
+    .content-conatiner {
+        padding: 0 20px;
+    }
+    .bottom-container {
+        padding: 0 10px;
+    }
+    .movie-name {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+    .crew {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .description h4 {
+        font-size: 14px;
+    }
+    .image-container {
+        width: 200px;
+        height: 270px;
+    }
+    .title-and-full {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .show-all-movie {
+        font-size: 14px;
+    }
+    .series-seasons, .recomendation-movies {
+        padding: 0 20px;
+    }
+    .radio-group {
+        flex-direction: column;
+    }
+    .custom-radio {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+    .custom-radio span {
+        font-size: 12px;
+    }
+    .free-button, .subscribe-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .movie-content-container {
+        padding: 0 20px;
+    }
+    .content-conatiner {
+        padding: 0 30px;
+    }
+    .movie-name {
+        font-size: 35px;
+    }
+    .crew {
+        width: 100%;
+    }
+    .image-container {
+        width: 240px;
+        height: 320px;
+    }
+    .title-and-full {
+        flex-direction: column;
+        padding: 0 40px;
+    }
+    .show-all-movie {
+        font-size: 16px;
+    }
+    .free-button, .subscribe-button {
+        width: auto;
+        padding: 12px 20px;
+    }
+}

@@ -17,3 +17,37 @@ a {
     position: relative;
     border-radius: 10px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "~@angular/material/prebuilt-themes/azure-blue.css";
+.mat-mdc-select-panel {
+    background-color: #010116 !important;
+    border-radius: 12px !important;
+    border: 1px solid rgb(255, 230, 91) !important;
+}
+.mat-mdc-select .mat-mdc-select-arrow {
+    color: black !important;
+}
+.mat-mdc-option{
+    color: white !important;
+}
+.mat-mdc-form-field {
+    height: 75px;
+    border-radius: 30px !important;
+}
+.mat-mdc-text-field-wrapper {
+    background-color: #010116 !important;
+    border-radius: 30px !important;
+    border: 1px solid #6610f2;
+}
+.mat-mdc-select-min-line{
+    color: white;
+}
+svg{
+    color: white;
+}
+.mat-mdc-text-field-wrapper:hover svg{
+    color: rgb(120, 0, 153)
+}

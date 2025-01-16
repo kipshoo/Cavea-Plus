@@ -214,17 +214,170 @@ form input, select {
     margin: 0;
     padding: 0;
 }
+.input-wrapper {
+  display: flex;
+  position: relative;
+  width: 340px;
+}
+.input-wrapper2 {
+  display: flex;
+  position: relative;
+  width: 340px;
+}
 .confPass-container i {
   position: absolute;
   font-size: 22px;
   color: #ffffff80 !important;
-  top: 755px;
-  right: 60px;
+  right: 130px;
+  top: 30%;
 }
 .password-container i{
-    position: absolute;
+  position: absolute;
+  font-size: 22px;
+  color: #ffffff80 !important;
+  right: 130px;
+  top: 30%;
+}
+
+
+
+
+
+@media (max-width: 1286px) {
+  .password-container i {
+    right: 140px !important;
+  }
+  .confPass-container i {
+    right: 140px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .register-container h1 {
     font-size: 22px;
-    color: #ffffff80 !important;
-    top: 755px;
-    right: 430px;
+  }
+  form input, select {
+    width: 300px;
+  }
+  .form-button button {
+    width: 300px;
+  }
+  .password-container i {
+    right: 70px !important;
+  }
+  .confPass-container i {
+    right: 70px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .register-container h1 {
+    font-size: 20px;
+  }
+  form input, select {
+    width: 280px;
+  }
+  .form-button button {
+    width: 280px;
+  }
+  .password-container i {
+    right: 90px !important;
+  }
+  .confPass-container i {
+    right: 90px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-container h1 {
+    font-size: 18px;
+  }
+  form input, select {
+    width: 260px;
+  }
+  .form-button button {
+    width: 260px;
+  }
+  .password-container i {
+    right: 110px !important;
+  }
+  .confPass-container i {
+    right: 110px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .register-container h1 {
+    font-size: 16px;
+  }
+  form input, select {
+    width: 90% !important;
+  }
+  .form-button button {
+    width: 90% !important;
+  }
+  .password-container i {
+    right: 110px !important;
+  }
+  .confPass-container i {
+    right: 110px !important;
+  }
+}
+
+@media (max-width: 431px) {
+  .name-and-last-name {
+    padding-left: 18px;
+  }
+  .gender-and-phone-number {
+    padding-left: 18px;
+  }
+  .password-and-confPass {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding-left: 40px;
+  }
+  .register-container h1 {
+    font-size: 16px;
+    text-align: center;
+  }
+  form input, select {
+    width: 90% !important;
+    padding: 14px 20px;
+    margin-bottom: 10px;
+  }
+  .form-button button {
+    width: 90% !important;
+  }
+  .check-container {
+    padding-left: 30px;
+  }
+  .check-container label {
+    font-size: 14px !important;
+    margin-left: 0 !important;
+  }
+  .phone-number-container {
+    width: 100% !important;
+  }
+  .email-container input {
+    width: 90% !important;
+  }
+  .email-container label {
+    padding-left: 340px !important;
+    width: 100% !important;
+  }  
+  .password-container, .confPass-container {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+    position: relative !important;
+  }
+  .password-container i, .confPass-container i {
+    top: 15px !important;
+    right: 20px !important; 
+  }
+  .password-container input, .confPass-container input {
+    width: 100% !important;
+  }
 }

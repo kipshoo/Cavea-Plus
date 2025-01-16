@@ -48,13 +48,6 @@ form input {
   color: white;
   font-weight: 400;
 }
-.password-container i {
-  position: absolute;
-  font-size: 22px;
-  color: #ffffff80 !important;
-  top: 338px;
-  right: 130px;
-}
 .auth-login-bottom-container {
   margin-top: 80px;
   display: flex;
@@ -131,4 +124,102 @@ form input {
 .on-invalid-user strong:hover {
   color: #ae0dd2;
   text-decoration: none;
+}
+.input-wrapper {
+  display: flex;
+  position: relative;
+  width: 340px;
+}
+.password-container i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  font-size: 18px;
+  color: #ffffff80 !important;
+}
+
+
+
+
+
+@media (max-width: 1200px) {
+  .login-container h1 {
+    font-size: 22px;
+  }
+  form input {
+    width: 300px;
+  }
+  .auth-button {
+    width: 300px;
+  }
+  .on-invalid-user {
+    width: 300px;
+  }
+  .password-container i {
+    right: 65px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .login-container h1 {
+    font-size: 20px;
+  }
+  form input {
+    width: 280px;
+  }
+  .auth-button {
+    width: 280px;
+  }
+  .on-invalid-user {
+    width: 280px;
+  }
+  .password-container i {
+    right: 75px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container h1 {
+    font-size: 18px;
+  }
+  form input {
+    width: 260px;
+  }
+  .auth-button {
+    width: 260px;
+  }
+  .on-invalid-user {
+    width: 260px;
+  }
+  .password-container i {
+    right: 95px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-container h1 {
+    font-size: 16px;
+  }
+  form input {
+    width: 90% !important;
+  }
+  .auth-button {
+    width: 90% !important;
+  }
+  .on-invalid-user {
+    width: 90% !important;
+  }
+  .password-container i {
+    right: 55px !important;
+  }
+}
+@media (max-width: 1286px) {
+  .password-container i {
+    right: 15px;
+  }
+}
+@media (max-width: 431px) {
+  .password-container i {
+    right: 15px;
+  }
 }

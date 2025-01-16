@@ -30,3 +30,53 @@
 .verify-width {
   width: 50% !important;
 }
+
+
+
+@media (max-width: 1200px) {
+  .login-width {
+    width: 50% !important;
+  }
+  .register-width {
+    width: 60% !important;
+  }
+  .password-width {
+    width: 50%;
+  }
+  .verify-width {
+    width: 60% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .login-width,
+  .password-width {
+    width: 80% !important;
+  }
+  .register-width,
+  .verify-width {
+    width: 85% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-width,
+  .password-width {
+    width: 90% !important;
+  }
+  .register-width,
+  .verify-width {
+    width: 95% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-width,
+  .password-width {
+    width: 100% !important;
+  }
+  .register-width,
+  .verify-width {
+    width: 100% !important;
+  }
+}

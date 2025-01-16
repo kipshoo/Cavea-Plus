@@ -31,20 +31,23 @@
         <br>
         <div class="password-container">
           <label for="password">პაროლი</label><br>
-          <i class="fa-solid fa-eye-slash" 
-             [class.fa-eye]="showPassword" 
-             [class.fa-eye-slash]="!showPassword" 
-             (click)="togglePasswordVisibility()"
-             style="color: white;"></i>
-          <input 
-             appAuthInputBorderFocus 
-             ngModel 
-             class="mt-3" 
-             [type]="showPassword ? 'text' : 'password'" 
-             id="password" 
-             name="password" 
-             required
-             #passwordInp="ngModel">
+          <div class="input-wrapper">
+            <input 
+              appAuthInputBorderFocus 
+              ngModel 
+              class="mt-3" 
+              [type]="showPassword ? 'text' : 'password'" 
+              id="password" 
+              name="password" 
+              required
+              #passwordInp="ngModel">
+              
+            <i class="fa-solid fa-eye-slash" 
+               [class.fa-eye]="showPassword" 
+               [class.fa-eye-slash]="!showPassword" 
+               (click)="togglePasswordVisibility()"
+               style="color: white;"></i>
+          </div>
           <div class="validator-h6" *ngIf="passwordInp.hasError('required') && passwordInp.dirty && passwordInp.invalid">
             <h6 class="h6-1-validator mt-1">შევსება აუცილებელი</h6>
           </div>

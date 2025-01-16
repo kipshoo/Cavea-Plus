@@ -132,12 +132,8 @@
             <div class="password-and-confPass">
                 <div class="password-container same-six-container">
                     <label for="password">პაროლი</label>
-                    <i class="fa-solid fa-eye-slash" 
-                       [class.fa-eye]="showPassword" 
-                       [class.fa-eye-slash]="!showPassword" 
-                       (click)="togglePasswordVisibility()"
-                       style="color: white;"></i>
-                    <input 
+                    <div class="input-wrapper">
+                        <input 
                         appAuthInputBorderFocus 
                         [type]="showPassword ? 'text' : 'password'" 
                         id="password" 
@@ -146,6 +142,14 @@
                         #passwordInp="ngModel"
                         required
                         pattern="^(?=.*[a-zA-Z])(?=.*\d).{6,}$">
+    
+                        <i class="fa-solid fa-eye-slash" 
+                        [class.fa-eye]="showPassword" 
+                        [class.fa-eye-slash]="!showPassword" 
+                        (click)="togglePasswordVisibility()"
+                        style="color: white;"></i>
+                    </div>
+                        
                     <div class="validator-h6 mt-1" *ngIf="passwordInp.hasError('required') && passwordInp.dirty && passwordInp.invalid">
                         <h6 class="h6-1-validator">შევსება აუცილებელია</h6>
                     </div>
@@ -155,12 +159,8 @@
                 </div>
                 <div class="confPass-container same-six-container">
                     <label for="confirmPassword">გაიმეორეთ პაროლი</label>
-                    <i class="fa-solid fa-eye-slash" 
-                       [class.fa-eye]="showPasswordd" 
-                       [class.fa-eye-slash]="!showPasswordd" 
-                       (click)="togglePasswordVisibilityConf()"
-                       style="color: white;"></i>
-                    <input 
+                    <div class="input-wrapper2">
+                        <input 
                         appAuthInputBorderFocus 
                         [type]="showPasswordd ? 'text' : 'password'" 
                         id="confirmPassword" 
@@ -168,6 +168,14 @@
                         [(ngModel)]="confirmPassword"
                         #confirmPasswordInp="ngModel"
                         required>
+
+                        <i class="fa-solid fa-eye-slash" 
+                       [class.fa-eye]="showPasswordd" 
+                       [class.fa-eye-slash]="!showPasswordd" 
+                       (click)="togglePasswordVisibilityConf()"
+                       style="color: white;"></i>
+                    </div>
+                    
                     <div class="validator-h6 mt-1" *ngIf="confirmPasswordInp.hasError('required') && confirmPasswordInp.dirty && confirmPasswordInp.invalid">
                         <h6 class="h6-1-validator">შევსება აუცილებელია</h6>
                     </div>
@@ -190,10 +198,12 @@
                 <h6 class="h6-1-validator">უნდა დაეთანხმოთ პირობებს</h6>
             </div>
             <div class="form-button">
-                <!-- <button type="submit" *ngIf="canSubmit()">რეგისტრაცია</button> -->
                 <button type="submit">რეგისტრაცია</button>
             </div>
         </form>
+
+        <div #modalContainer></div>
+
         <div class="auth-container mt-4">
             <p>უკვე გაქვთ ანგარიში? <strong routerLink="/auth/login">ავტორიზაცია</strong></p>
         </div>

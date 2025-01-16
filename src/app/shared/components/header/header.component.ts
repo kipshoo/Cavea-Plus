@@ -9,12 +9,14 @@ import { Location } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
+
 export class HeaderComponent implements OnInit, OnDestroy {
   constructor (private commonService:CommonService, private location:Location) {}
   navbarArray:Array<any> = [];
   isDropdownOpen = false;
   selectedLanguage = 'GEO';
   selectedNavIndex: number = 0;
+  isNavDropdownOpen = false;
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -48,13 +50,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.commonService.getHeaderNavbar()
     .subscribe((response) => {
       this.navbarArray = response.items;
-      console.log(this.navbarArray);
     })
   }
 
   getParams(){
     let locationPath = this.location.path()
-
     return locationPath == '' ? '/' : locationPath;
+  }
+  
+  toggleNavDropdown() {
+    this.isNavDropdownOpen = !this.isNavDropdownOpen;
   }
 }

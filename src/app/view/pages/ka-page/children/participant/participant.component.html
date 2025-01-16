@@ -1,11 +1,12 @@
 <app-header></app-header>
 
-<app-filter-for-movies-and-series (filteredData)="updateMovieArray($event)"></app-filter-for-movies-and-series>
-
-<ng-container *ngIf="movieArray.length > 0; else error">
+<ng-container *ngIf="moviesArray.length > 0; else error">
+    <div class="title-and-full">
+        <h1 class="title">{{blockObject.firstname}} {{blockObject.lastname}}</h1>
+    </div>
     <div class="movie-content-container">
         <div class="movie-image-container">
-            <ng-container *ngFor="let movieItem of movieArray; let i = index">
+            <ng-container *ngFor="let movieItem of moviesArray; let i = index">
                 <div class="image-container" 
                     [ngClass]="{'hovered': hoveredMovie === movieItem}" 
                     (mouseenter)="onHover(movieItem)" 

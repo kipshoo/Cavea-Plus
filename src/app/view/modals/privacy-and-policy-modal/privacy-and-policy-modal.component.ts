@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   styleUrl: './privacy-and-policy-modal.component.css'
 })
 export class PrivacyAndPolicyModalComponent implements OnInit, OnDestroy {
+  @Output() closeEmitter:EventEmitter<boolean> = new EventEmitter();
   constructor(private authService:AuthService) { }
   data$!:Observable<any>
   empty!:string
@@ -23,14 +24,22 @@ export class PrivacyAndPolicyModalComponent implements OnInit, OnDestroy {
   }
 
 
-  private getThermOfUseData():void { 
+  private getThermOfUseData(): void {
     this.authService.getThermOfUse()
-    .subscribe((response) => {
-      
-    }, (err) => {
-      if(err.status == 200){
-        this.empty = err.error.text;
+    .subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (err) => {
+        console.error(err);
+        if (err.status === 200) {
+          this.empty = err.error.text;
+        }
       }
-   });
+    );
+  }
+  
+  onClsBtnClick() {
+    this.closeEmitter.emit(true);
   }
 }

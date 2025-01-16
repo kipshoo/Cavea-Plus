@@ -1,0 +1,190 @@
+<app-header></app-header>
+<ng-container *ngIf="moviesArray && moviesArray.length > 0">
+    <div class="movie-content-container" *ngFor="let movie of moviesArray">
+      <div class="content-conatiner"
+        [style.backgroundImage]="'url(https://cavea.plus' + movie.banner + ')'">
+        <div class="top-temp-container"></div>
+        <div class="bottom-container">
+          <div class="lang-year-rat-imdb-durat-1">
+            <ng-container *ngFor="let language of movie.languages">
+              <strong class="language-strong">{{language}}</strong>
+              <span>|</span>
+            </ng-container>
+            <p>•</p>
+            <strong>{{movie.year}}</strong>
+            <p>•</p>
+            <strong class="language-strong">{{movie.mpaaRating}}</strong>
+            <p *ngIf="movie.imdb">•</p>
+            <strong *ngIf="movie.imdb">{{movie.imdb ? 'IMDB ' + movie.imdb : ''}}</strong>
+            <p *ngIf="movie.duration">•</p>
+            <strong *ngIf="movie.duration">
+              {{ movie.duration / 3600 | number: '1.0-0' }}h
+              {{ (movie.duration % 3600) / 60 | number: '1.0-0' }}m
+            </strong>
+          </div>
+          <h1 class="movie-name">{{movie.name}}</h1>
+          <div class="play-addToCollection-favoirites">
+            <ng-container *ngIf="movie.type == 'SVOD'">
+              <button appSubscriptionAuthButtonDesign (click)="onBtnClickGuard()">გამოიწერე</button>
+            </ng-container>
+            <ng-container *ngIf="movie.type != 'SVOD'">
+              <button appPlayButtonDesign (click)="onBtnClickGuard()">Play</button>
+            </ng-container>
+            <img src="/src/assets/cavea-logo.svg" alt="">
+          </div>
+          <div class="description-crew">
+            <div class="description">
+              <h4>{{movie.description}}</h4>
+            </div>
+            <div class="crew">
+              <div class="director" *ngIf="movie.crew">
+                <p>რეჟისორი: 
+                  <ng-container *ngFor="let crewMember of movie.crew">
+                    <strong *ngIf="crewMember.occupation === 'director'"
+                    [routerLink]="['/participant', crewMember.slug]">
+                      {{ crewMember.firstname }} {{ crewMember.lastname }}
+                    </strong>
+                  </ng-container>
+                </p>
+              </div>
+                <div class="actors">
+                    <p>მსახიობები:
+                        <ng-container *ngFor="let crewMember of movie.crew; let last = last">
+                            <strong *ngIf="crewMember.occupation === 'actor'"
+                            [routerLink]="['/participant', crewMember.slug]">
+                              {{crewMember.firstname}} {{crewMember.lastname}}{{!last ? ', ' : ''}}
+                            </strong>
+                        </ng-container>
+                    </p>
+                </div>
+                <ng-container *ngFor="let crewMember of movie.crew">
+                  <ng-container *ngIf="crewMember.occupation === 'writer'">
+                    <div class="screenwriter">
+                      <p>სცენარისტი: 
+                        <strong
+                        [routerLink]="['/participant', crewMember.slug]">
+                          {{ crewMember.firstname }} {{ crewMember.lastname }}
+                        </strong>
+                      </p>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <div class="genres">
+                  <p>ჟანრები:
+                    <ng-container *ngFor="let movieGenre of movie.genres; let last = last">
+                      <h6>{{movieGenre.name}}{{!last ? ', ' : ''}}</h6>
+                    </ng-container>
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+
+  <!-- სანამ ეს კონტეინერი გამოჩნდება უნდა იყოს "გამიხმოვანეთ და ჰიუსტონ... ანუ მჭირდება რომ გავაკეთო ტოკენი თუ იუზერი დალოგინებულია." -->
+   
+<!-- <ng-container *ngIf="moviesArray && moviesArray.length > 0">
+  <ng-container *ngFor="let movie of moviesArray">
+    <ng-container *ngIf="movie.movieType == 'series'">
+      <div class="series-seasons">
+        <div class="series-seasons-content">
+          <h1 class="title-of-season">სეზონი 1</h1>
+          <h1 class="title-of-season">სეზონი 2</h1>
+          <div class="radio-to-choose-season">
+            <label for="season">სეზონები:</label>
+            <div class="radio-group">
+              <label class="custom-radio">
+                <input type="radio" name="season" value="1">
+                <span>1</span>
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="2">
+                <span>2</span>
+              </label>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container> -->
+
+
+<ng-container *ngIf="moviesArray && moviesArray.length > 0">
+  <ng-container *ngFor="let movie of moviesArray">
+      <div class="recomendation-movies">
+        <div class="recomendation-movies-content">
+          <h1 class="title-of-recomendation">დამიჯერე, მოგეწონება</h1>
+          <div class="movies-container mt-5">
+            <ng-container *ngFor="let movieItem of recomendedMovies; let i = index">
+              <div class="image-container" 
+                  [ngClass]="{'hovered': hoveredMovie === movieItem}" 
+                  (mouseenter)="onHover(movieItem)" 
+                  (mouseleave)="onHover(null)" 
+                  style="background-image: url(https://cavea.plus{{movieItem.poster}});"
+                  [routerLink]="['/movies', movieItem.slug]">
+                  <div class="price-container">
+                      <strong>{{movieItem.type == 'SVOD' ? 'გამოიწერე' : 'უფასო'}}</strong>
+                  </div>
+                  <div class="name-container">
+                      <strong>{{ movieItem.name.length > 19 ? movieItem.name.slice(0, 19) + '...' : movieItem.name }}</strong>
+                  </div>
+                  <div class="hover-content">
+                      <div class="hover-inside-content">
+                          <div class="hover-content-top">
+                              <div class="add-to-collection">
+                              </div>
+                          </div>
+                          <div class="hover-content-bottom">
+                              <div class="name2-container mt-5">
+                                  <strong>{{movieItem.name}}</strong>
+                              </div>
+                              <div class="play-and-rating mt-3">
+                                  <ng-container *ngIf="movieItem.type == 'SVOD'">
+                                      <button appSubscriptionAuthButtonDesign (click)="onBtnClickGuard()">გამოიწერე</button>
+                                    </ng-container>
+                                    <ng-container *ngIf="movieItem.type != 'SVOD'">
+                                      <button appPlayButtonDesign (click)="onBtnClickGuard()">Play</button>
+                                    </ng-container>
+                                  <div class="rating-container">
+                                      <i class="fa-regular fa-star"></i>
+                                      <strong class="text-white">{{movieItem.rating}}</strong>
+                                  </div>
+                              </div>
+                              <div class="genres-container mt-4">
+                                  <strong class="text-white">{{movieItem.genres[0].name}}</strong>
+                              </div>
+                              <div class="lang-year-rat-imdb-duration">
+                                  <ng-container *ngFor="let language of movieItem.languages">
+                                      <strong class="language-strong-1">{{language}}</strong>
+                                      <span>|</span>
+                                  </ng-container>
+                                  <p>•</p>
+                                  <strong>{{movieItem.year}}</strong>
+                                  <p>•</p>
+                                  <strong class="language-strong-1">{{movieItem.mpaaRating}}</strong>
+                                  <p *ngIf="movieItem.imdb">•</p>
+                                  <strong *ngIf="movieItem.imdb" style="font-size: 9px !important;">{{movieItem.imdb ? 'IMDB ' + movieItem.imdb : ''}}</strong>
+                                  <p *ngIf="movieItem.duration">•</p>
+                                  <strong *ngIf="movieItem.duration" style="font-size: 9px !important;">
+                                      {{ movieItem.duration / 3600 | number: '1.0-0' }}h 
+                                      {{ (movieItem.duration % 3600) / 60 | number: '1.0-0' }}m
+                                  </strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+<app-footer></app-footer>

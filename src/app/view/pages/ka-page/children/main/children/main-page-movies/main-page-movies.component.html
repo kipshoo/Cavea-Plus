@@ -1,4 +1,4 @@
-<ng-container *ngIf="moviesArray.length > 0; else errText">
+<ng-container *ngIf="moviesArray.length > 0; else errText"  >
     <ng-container *ngFor="let item of moviesArray">
         <app-main-page-single-movie [movies]="item"></app-main-page-single-movie>
     </ng-container>

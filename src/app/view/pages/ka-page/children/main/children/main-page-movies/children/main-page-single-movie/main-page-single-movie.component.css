@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: flex-end;
     position: relative;
-    z-index: 50;
+    z-index: 1;
     transition: .5s;
     transform-origin: center;
 }
@@ -71,7 +71,7 @@
     font-weight: 400;
 }
 .image-container:hover {
-    transform: scale(1.12); /* სურათის ოდნავი გაფართოება */
+    transform: scale(1.12);
     z-index: 50;
     cursor: pointer;
     border-radius: 20px;
@@ -117,7 +117,6 @@
 .name-container,
 .price-container {
     display: block;
-    /* Add other styles as needed */
 }
 
 .image-container.hovered .name-container,
@@ -141,26 +140,6 @@
     gap: 10px;
     align-items: center;
     justify-content: start;
-}
-.play-and-rating button {
-    padding: 4px 16px;
-    height: 46px;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-    font-size: 14px;
-    color: white;
-    border: 1px solid transparent;
-    font-weight: 500;
-    background: linear-gradient(#010116, #010116) padding-box, 
-                linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb) border-box;
-    transition: background 0.5s ease-out;
-}
-.play-and-rating button:hover {
-    background: linear-gradient(90deg, #52fff3, #380ad1 32.6%, #7b0ad1 68.54%, #d840fb) padding-box;
-    background-position: 50px;
 }
 .rating-container {
     display: flex;
@@ -186,7 +165,7 @@
     font-weight: 400;
 }
 .lang-year-rat-imdb-durat {
-    width: auto;
+    width: fit-content;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -202,4 +181,16 @@
     background-color: rgba(128, 128, 128, 0.409);
     padding: 1px 2px;
     border-radius: 3px;
+}
+
+
+
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 16px;
+    }
+    .show-all-movie {
+        font-size: 12px;
+    }
 }

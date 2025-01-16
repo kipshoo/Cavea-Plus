@@ -13,7 +13,19 @@ export class MoviesService {
     return this.http.get(`${this.commonService.baseUrl}/blocks?lang=ka&offset=${offset}&limit=3`);
   }
 
-  public getWhenNostalgyHits():Observable<any> {
-    return this.http.get(`${this.commonService.baseUrl}/blocks/when-nostalgy-hits?lang=ka&limit=18`);
+  public getMoviesBySlugNmae(slugName:string):Observable<any> {
+    return this.http.get(`${this.commonService.baseUrl}/blocks/${slugName}?lang=ka&limit=18`);
+  }
+
+  public getMoviesBySlugNameForSingleMoviePage(slugName: string):Observable<any> {
+    return this.http.get(`${this.commonService.baseUrl}/movies/${slugName}?lang=ka`)
+  }
+
+  public getRecomendationMovies(slugName:string):Observable<any> {
+    return this.http.get(`${this.commonService.baseUrl}/movies/${slugName}/recommendations?lang=ka`)
+  }
+
+  public getcards(limit:number, offset:number):Observable<any>{
+    return this.http.get(`${this.commonService.baseUrl}/movies/list?lang=ka&limit=${limit}&offset=${offset}&movieType=movie&order=newest`)
   }
 }

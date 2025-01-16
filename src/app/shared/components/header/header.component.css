@@ -11,6 +11,8 @@ header {
     left: 0;
     top: 0;
     backdrop-filter: blur(90px);
+    background: linear-gradient(180deg, #010116 0, transparent 100%);
+    border-bottom: 1px solid #7b0ad150;
 }
 .header-container {
     width: 100%;
@@ -21,7 +23,7 @@ header {
 }
 .left-container {
     width: 50%;
-    height: auto;
+    height: 75px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -46,7 +48,7 @@ header {
     padding: 0;
     margin: 0;
     width: auto;
-    height: auto;
+    height: 75px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -59,12 +61,17 @@ header {
     opacity: 1;
     font-size: 16px;
     cursor: pointer;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .right-container {
     width: 50%;
-    height: auto;
+    height: 75px;
     display: flex;
     justify-content: end;
+    align-items: center;
     gap: 15px;
 }
 .change-language-container {
@@ -122,7 +129,7 @@ header {
     height: 45px;
     border-radius: 100px;
     padding: 10px 23px;
-    border: 2px solid #d840fb;
+    border: 1px solid #d840fb;
     background-color: #2e1f42;
     color: white;
     transition: .5s ease;
@@ -136,13 +143,158 @@ header {
 .left-r-container ul li.active {
     color: white;
     opacity: 1;
-    border-bottom: 2px solid #d840fb;
-    padding-bottom: 5px;
-    border-image: linear-gradient(to right, #d840fb, #4e1a8c, #d840fb) 1;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #8301c900 0%, #dc42ff, #f2f2f2, #dc42ff, #8301c900) 1;
     border-image-slice: 1;
+    box-sizing: border-box;
 }
+
 .title-and-full {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+.mobile-nav-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .nav-dropdown {
+    display: none;
+    flex-direction: column;
+    background-color: #1e193e;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.nav-dropdown.show {
+    display: flex;
+}
+  
+  .nav-dropdown ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .nav-dropdown ul li {
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .nav-dropdown ul li:hover {
+    background-color: #6610f2;
+  }
+  
+  .nav-dropdown.show {
+    display: flex;
+  }
+
+
+
+
+
+@media (min-width: 1024px) {
+    header {
+        padding: 0 56px;
+    }
+    .header-container {
+        flex-direction: row;
+    }
+    .left-container, .right-container {
+        width: 50%;
+    }
+}
+
+
+@media (max-width: 1023px) {
+    header {
+        height: auto;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .left-container, .right-container {
+        width: 100%;
+        justify-content: center;
+    }
+    .left-l-container img {
+        width: 45px;
+        height: 35px;
+    }
+    .left-r-container ul {
+        gap: 10px;
+    }
+    .change-language-container {
+        width: 80px;
+        height: 40px;
+    }
+    .login-register-btn {
+        padding: 8px 18px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+        height: auto;
+        flex-direction: column;
+    }
+    .header-container {
+        flex-direction: column;
+    }
+    .left-container, .right-container {
+        width: 100%;
+        align-items: center;
+    }
+    .left-r-container ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .change-language-container {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+    .drop-down-menu p {
+        font-size: 14px;
+    }
+    .login-register-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    
+}
+@media (max-width: 1023px) {
+    .left-r-container ul {
+        display: none;
+    }
+    .mobile-nav-toggle {
+        display: block;
+    }
+    .nav-dropdown {
+        display: none; 
+    }
+    .nav-dropdown.show {
+        display: flex;
+    }
+}
+@media (min-width: 1024px) {
+    .left-r-container ul {
+        display: flex;
+    }
 }

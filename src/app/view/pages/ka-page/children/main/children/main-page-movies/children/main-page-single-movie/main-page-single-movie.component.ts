@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from '../../../../../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page-single-movie',
@@ -7,10 +9,22 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./main-page-single-movie.component.css']
 })
 export class MainPageSingleMovieComponent {
+  constructor(private authService:AuthService, private router:Router) { }
   @Input() movies: any;
-  hoveredIndex: number | null = null; // Track which container is hovered
+  hoveredMovie: any = null;
 
-  onHover(index: number | null) {
-    this.hoveredIndex = index;
+  onHover(movie: any | null) {
+    this.hoveredMovie = movie;
+  }
+
+  onBtnClickGuard() {
+    const isLoggedIn = this.authService.isLoggedIn();
+    console.log('AuthGuard check:', isLoggedIn);
+    if (isLoggedIn) {
+      return true;
+    } else {
+      this.router.navigate(['auth/login']);
+      return false;
+    }
   }
 }

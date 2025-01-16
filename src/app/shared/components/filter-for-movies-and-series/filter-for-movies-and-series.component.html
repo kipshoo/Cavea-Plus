@@ -1,0 +1,84 @@
+<div class="main_filter_container">
+  <div class="filter-container">
+    <div class="mat-div">
+      <mat-form-field class="top">
+        <mat-label class="label">ჟანრი</mat-label>
+        <mat-select class="select" [formControl]="genre" multiple (selectionChange)="filter()">
+          <ng-container *ngFor="let item of genreArray">
+            <mat-option [value]="item.id">{{ item.name }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label ">წლიდან</mat-label>
+        <mat-select class="select" [panelClass]="'custom-panel'" [(value)]="fromYear" (selectionChange)="onFromYearChange(); filter()">
+          <ng-container *ngFor="let year of years">
+            <mat-option [value]="year">{{ year }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label">წლამდე</mat-label>
+        <mat-select class="select" [panelClass]="'custom-panel'" [(value)]="toYear" (selectionChange)="filter()">
+          <ng-container *ngFor="let year of getToYearOptions()">
+            <mat-option [value]="year">{{ year }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label">რეიტინგი-IMDB</mat-label>
+        <mat-select class="select" [panelClass]="'custom-panel'" [formControl]="ratingimdb" multiple (selectionChange)="filter()">
+          <ng-container *ngFor="let rating of ratingIMDB">
+            <mat-option [value]="rating">{{ rating }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label">რეიტინგი</mat-label>
+        <mat-select class="select" [panelClass]="'custom-panel'" [formControl]="ratingcavea" multiple (selectionChange)="filter()">
+          <ng-container *ngFor="let rating of ratingCavea">
+            <mat-option [value]="rating">{{ rating }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label">ენა</mat-label>
+        <mat-select class="select" [formControl]="language" multiple (selectionChange)="filter()">
+          <ng-container *ngFor="let language of languages">
+            <mat-option [value]="language.id">{{ language.name }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label">სუბტიტრები</mat-label>
+        <mat-select class="select" [formControl]="subtitles" multiple (selectionChange)="filter()">
+          <ng-container *ngFor="let language of languages">
+            <mat-option [value]="language.id">{{ language.name }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field class="top">
+        <mat-label class="label">ქვეყნები</mat-label>
+        <mat-select class="select" [formControl]="countries" multiple (selectionChange)="filter()">
+          <ng-container *ngFor="let country of countryArray">
+            <mat-option [value]="country.id">{{ country.name }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="checkbox_container">
+      <input type="checkbox" class="free" #free (change)="checkF(); filter()" />
+      <label for="free">უფასო</label>
+      <input type="checkbox" class="premium" #premium (change)="checkP(); filter()" />
+      <label for="premium">პრემიუმი</label>
+    </div>
+  </div>
+</div>

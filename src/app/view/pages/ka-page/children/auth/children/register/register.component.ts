@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { PrivacyAndPolicyModalComponent } from '../../../../../../modals/privacy-and-policy-modal/privacy-and-policy-modal.component';
 import { AuthService } from '../../../../../../services/auth.service';
 import { RegisterForm } from '../../../../../../../shared/interfaces/form';
@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
-  constructor(private authService: AuthService, private router:Router) {}
-
-  @ViewChild('modalContainer', { read: ViewContainerRef }) modalContainer!: ViewContainerRef;
+export class RegisterComponent implements AfterViewInit {
+  @ViewChild('modalContainer', { read: ViewContainerRef, static: false }) modalContainer!: ViewContainerRef;
+  
+  constructor(private authService: AuthService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   selectedBirthDay: number = 1;
   selectedBirthMonth: number = 12;
@@ -29,6 +29,10 @@ export class RegisterComponent {
   confirmPassword: string = '';
   isTermsAccepted: boolean = false;
 
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges();
+  }
+
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
@@ -38,21 +42,28 @@ export class RegisterComponent {
   }
 
   public onPrvcAndPlcClick() {
-    this.modalContainer.createComponent(PrivacyAndPolicyModalComponent);
+    if (this.modalContainer) {
+      let modalComponentRef = this.modalContainer.createComponent(PrivacyAndPolicyModalComponent);
+      
+      modalComponentRef.instance.closeEmitter.subscribe(() => {
+        this.modalContainer.clear();
+      });
+    } else {
+      console.error('modalContainer is undefined or not available yet');
+    }
   }
 
   public onRegisterFormSubmit(form: NgForm) {
     if (this.password !== this.confirmPassword) {
       return;
-    };
-    
+    }
 
     if (form.valid) {
-      let registerData:RegisterForm = form.value;
+      let registerData: RegisterForm = form.value;
       this.authService.sendRegisterRequest(registerData).subscribe(
         (response) => {
           console.log(response);
-          localStorage.setItem('id', JSON.stringify(response.id))
+          localStorage.setItem('id', JSON.stringify(response.id));
           this.ifRegisteredGoToVerify();
         },
         (error) => {
@@ -62,9 +73,6 @@ export class RegisterComponent {
       );
     }
   }
-  // canSubmit(): boolean {
-  //   return this.form.valid && this.isTermsAccepted;
-  // }
 
   public ifRegisteredGoToVerify() {
     this.router.navigate(['/auth/verify']);

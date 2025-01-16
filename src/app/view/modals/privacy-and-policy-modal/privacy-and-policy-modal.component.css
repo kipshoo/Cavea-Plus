@@ -3,23 +3,54 @@
     height: 100vh;
     z-index: 1000;
     background-color: transparent;
-    padding-top: 50px;
-    backdrop-filter: blur(1px);
     position: fixed;
     left: 0;
     top: 0;
-
+    padding-right:4px;
+    overflow: hidden;
 }
 .center-container {
     width: 100%;
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     color: #fff;
-    padding: 3.12rem 2.5rem 2.5rem;
+    padding: 0px 40px;
     display: flex;
     flex-direction: column;
-    border: .05rem solid rgba(255, 255, 255, .2);
-    border-radius: 2rem;
-    background: #1a1a30;
     margin: auto 0;
+}
+.close-and-title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.evrth-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: .05rem solid rgba(255, 255, 255, .2);
+    background :#1a1a30;
+}
+.close-and-title button {
+    width: 48px;
+    height: 48px;
+    border-radius: 200px;
+    font-size: 18px;
+    font-weight: bolder;
+    background-color: #0101164d;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.close-and-title button:hover {
+    background-color: #d840fb4d;
+    border: 2px solid #D840FB !important;
+    color: #D840FB;
 }
