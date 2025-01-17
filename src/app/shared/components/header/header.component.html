@@ -2,24 +2,28 @@
     <div class="header-container">
         <div class="left-container">
           <div class="mobile-nav-toggle" (click)="toggleNavDropdown()">
-            <i [ngClass]="isNavDropdownOpen ? 'fa-times' : 'fa-bars'" class="fa-solid"></i>
+            <i *ngIf="!isNavDropdownOpen" class="fa-solid fa-bars"></i>
+            <i *ngIf="isNavDropdownOpen" class="fa-solid fa-times hide-icon-for-burger"></i>
           </div>
-          
-            <div class="left-l-container">
-              <img src="assets/cavea-logo.svg" alt="" routerLink="/" (click)="scrollToTop()">
-            </div>
-          
-          
+          <div class="left-l-container" [ngClass]="{'hide-on-mobile': isNavDropdownOpen}">
+            <img src="assets/cavea-logo.svg" alt="" routerLink="/" (click)="scrollToTop()">
+          </div>
             <div class="nav-dropdown" [class.show]="isNavDropdownOpen">
-              <ul>
-                <li
-                  *ngFor="let navItem of navbarArray; let i = index"
-                  (click)="onClickToScroll(); toggleNavDropdown()"
-                  [ngClass]="{'active': getParams() == navItem.attr}">
-                  <i [ngClass]="getIconClass(navItem.icon)"></i>
-                  <a [routerLink]="navItem.attr">{{ navItem.name }}</a>
-                </li>
-              </ul>
+              <div class="nav-drop-down-content">
+                <div class="img-and-i-after-come-left">
+                  <img src="assets/cavea-logo.svg" alt="">
+                  <i class="fa-solid fa-times close-menu-icon" (click)="toggleNavDropdown()"></i>
+                </div>
+                <ul>
+                  <li
+                    *ngFor="let navItem of navbarArray; let i = index"
+                    (click)="onClickToScroll(); toggleNavDropdown()"
+                    [ngClass]="{'active': getParams() == navItem.attr}">
+                    <i [ngClass]="getIconClass(navItem.icon)"></i>
+                    <a [routerLink]="navItem.attr">{{ navItem.name }}</a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="left-r-container">
                 <ul>
