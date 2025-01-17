@@ -1,13 +1,14 @@
 <header>
     <div class="header-container">
         <div class="left-container">
+          <div class="mobile-nav-toggle" (click)="toggleNavDropdown()">
+            <i [ngClass]="isNavDropdownOpen ? 'fa-times' : 'fa-bars'" class="fa-solid"></i>
+          </div>
+          
             <div class="left-l-container">
               <img src="assets/cavea-logo.svg" alt="" routerLink="/" (click)="scrollToTop()">
             </div>
           
-            <div class="mobile-nav-toggle" (click)="toggleNavDropdown()">
-              <i [ngClass]="isNavDropdownOpen ? 'fa-times' : 'fa-bars'" class="fa-solid"></i>
-            </div>
           
             <div class="nav-dropdown" [class.show]="isNavDropdownOpen">
               <ul>
@@ -15,6 +16,7 @@
                   *ngFor="let navItem of navbarArray; let i = index"
                   (click)="onClickToScroll(); toggleNavDropdown()"
                   [ngClass]="{'active': getParams() == navItem.attr}">
+                  <i [ngClass]="getIconClass(navItem.icon)"></i>
                   <a [routerLink]="navItem.attr">{{ navItem.name }}</a>
                 </li>
               </ul>

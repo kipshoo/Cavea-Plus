@@ -61,4 +61,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   toggleNavDropdown() {
     this.isNavDropdownOpen = !this.isNavDropdownOpen;
   }
+
+  getIconClass(icon: string): string {
+    switch (icon) {
+      case 'icon-home':
+        return 'fa fa-home';
+      case 'icon-movies':
+        return 'fa fa-film';
+      case 'icon-tv-shows':
+        return 'fa fa-tv';
+      case 'icon-watchlist':
+        return 'fa fa-bookmark';
+      default:
+        return '';
+    }
+  }
 }

@@ -148,7 +148,6 @@ header {
     border-image-slice: 1;
     box-sizing: border-box;
 }
-
 .title-and-full {
     width: 100%;
     display: flex;
@@ -159,47 +158,79 @@ header {
     cursor: pointer;
     font-size: 24px;
     color: white;
-  }
-  
-  .nav-dropdown {
+}
+.nav-dropdown {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 20%;
+    min-width: 230px;
+    height: 100vh;
+    background-color: #010116;
+    border-radius: 5px;
     display: none;
     flex-direction: column;
-    background-color: #1e193e;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
     z-index: 200;
     padding: 10px 0;
-    border-radius: 5px;
+    animation: slideIn 0.4s ease-out forwards;
 }
-
 .nav-dropdown.show {
     display: flex;
 }
-  
-  .nav-dropdown ul {
+.nav-dropdown ul {
     padding: 0;
     margin: 0;
     list-style: none;
-  }
-  
-  .nav-dropdown ul li {
-    padding: 10px 15px;
+}
+.nav-dropdown ul li {
+    margin: 0 0 10px 16px;
+    padding: 10px 20px;
     color: white;
     cursor: pointer;
     text-align: center;
-  }
-  
-  .nav-dropdown ul li:hover {
-    background-color: #6610f2;
-  }
-  
-  .nav-dropdown.show {
     display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.nav-dropdown ul li i {
+    font-size: 22px !important;
+    margin-right: 16px;
+    color: #9927d9;
+}
+.nav-dropdown ul li a {
+    font-size: 12px;
+    color: #9927d9;
+}
+.nav-dropdown li.active {
+    background-color: rgba(255, 255, 255, 0.132);
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
   }
+  
+  .nav-dropdown li.active i {
+    color: #d840fb !important;
+  }
+  
+  .nav-dropdown li.active a {
+    color: white !important;
+  }
+  
 
 
+
+
+
+
+
+
+@keyframes slideIn {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
 
 
 
@@ -227,9 +258,14 @@ header {
         flex-direction: column;
         align-items: center;
     }
+    .left-container {
+        gap: 10px;
+        padding-left: 10px;
+    }
     .left-container, .right-container {
         width: 100%;
         justify-content: center;
+        align-items: center;
     }
     .left-l-container img {
         width: 45px;
