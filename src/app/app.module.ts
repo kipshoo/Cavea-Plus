@@ -65,7 +65,7 @@ import { MatSliderModule } from '@angular/material/slider';
     ParticipantComponent,
     SingleMovieSeriesPageComponent,
     MoviesComponent,
-    FilterForMoviesAndSeriesComponent
+    FilterForMoviesAndSeriesComponent,
   ],
   imports: [
     BrowserModule,

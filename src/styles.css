@@ -45,6 +45,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-radius: 30px !important;
     border: 1px solid #6610f2;
 }
+.mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper{
+    display: flex;
+    align-items: center;
+}
 .mat-mdc-select-min-line{
     color: white;
 }
@@ -65,5 +69,30 @@ svg{
     }
     .mat-mdc-select-panel {
         width: 400px !important;
+    }
+}
+@media (max-width: 526px ) {
+    .mat-mdc-form-field {
+        width: 350px !important;
+        height: 60px;
+    }
+    .mat-mdc-text-field-wrapper {
+        width: 350px !important;
+    }
+    .mat-mdc-select-panel {
+        width: 350px !important;
+    }
+}
+
+@media (max-width: 481px) {
+    .mat-mdc-form-field {
+        width: 300px !important;
+        height: 60px;
+    }
+    .mat-mdc-text-field-wrapper {
+        width: 300px !important;
+    }
+    .mat-mdc-select-panel {
+        width: 300px !important;
     }
 }
